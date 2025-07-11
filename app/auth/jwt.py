@@ -1,4 +1,3 @@
-# ✅ app/auth/jwt.py
 import jwt
 from datetime import datetime, timedelta
 from app.config import JWT_SECRET, JWT_ALGORITHM
