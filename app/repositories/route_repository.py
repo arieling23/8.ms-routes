@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from app.models.route import Route
-from app.logger import logger  # Asumiendo que ya tienes este logger
+from app.logger import logger  
 
 class RouteRepository:
 
