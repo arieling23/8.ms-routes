@@ -1,4 +1,4 @@
-# ✅ app/main.py
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from strawberry.fastapi import GraphQLRouter
@@ -18,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Contexto para GraphQL
+
 async def get_context(request: Request):
     session_generator = get_session()
     session = await session_generator.__anext__()
@@ -28,7 +28,7 @@ async def get_context(request: Request):
         "session": session,
     }
 
-# Middleware para cerrar sesión
+
 @app.middleware("http")
 async def close_db_session(request: Request, call_next):
     response = None
@@ -40,11 +40,11 @@ async def close_db_session(request: Request, call_next):
             await session_gen.aclose()
     return response
 
-# GraphQL
+
 graphql_app = GraphQLRouter(schema, context_getter=get_context)
 app.include_router(graphql_app, prefix="/api/routes")
 
-# Inicio
+
 @app.on_event("startup")
 async def startup_event():
     await init_db()

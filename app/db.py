@@ -12,7 +12,7 @@ async def get_session():
         yield session
 
 async def init_db():
-    # ⬅️ IMPORTA tus modelos aquí para que SQLAlchemy cree las tablas
+   
     from app.models.route import Route, Segment
 
     async with engine.begin() as conn:

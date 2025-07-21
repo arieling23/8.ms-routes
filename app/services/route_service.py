@@ -15,7 +15,7 @@ class RouteService:
                 new_segment = Segment(
                     origin=segment["origin"],
                     destination=segment["destination"],
-                    distance_km=segment["distanceKm"]  # ✅ acceso por clave
+                    distance_km=segment["distanceKm"]  
                 )
                 new_route.segments.append(new_segment)
 

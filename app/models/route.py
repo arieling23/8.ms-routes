@@ -6,7 +6,7 @@ class Route(Base):
     __tablename__ = "routes"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False)  # Ejemplo: "Miami-Quito"
+    name = Column(String, nullable=False)  
 
     segments = relationship("Segment", back_populates="route", cascade="all, delete-orphan")
 
@@ -16,12 +16,12 @@ class Segment(Base):
     id = Column(Integer, primary_key=True, index=True)
     origin = Column(String, nullable=False)
     destination = Column(String, nullable=False)
-    distance_km = Column(Integer, nullable=False)  # ⚠️ Se mantiene en snake_case internamente
+    distance_km = Column(Integer, nullable=False)  
 
     route_id = Column(Integer, ForeignKey("routes.id"), nullable=False)
     route = relationship("Route", back_populates="segments")
 
-    # ⬇️ Campo de actualización automática
+   
     updated_at = Column(
         DateTime(timezone=True),
         server_default=func.now(),
